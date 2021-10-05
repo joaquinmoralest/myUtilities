@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClimaPage implements OnInit {
 
+  pageTitle = 'Clima';
+
   constructor() { }
 
   ngOnInit() {

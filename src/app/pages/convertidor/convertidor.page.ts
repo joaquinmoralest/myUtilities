@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConvertidorPage implements OnInit {
 
+  pageTitle = 'Convertidor';
+
   constructor() { }
 
   ngOnInit() {

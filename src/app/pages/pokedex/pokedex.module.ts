@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ClimaPageRoutingModule } from './clima-routing.module';
+import { PokedexPageRoutingModule } from './pokedex-routing.module';
 
-import { ClimaPage } from './clima.page';
+import { PokedexPage } from './pokedex.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ClimaPageRoutingModule,
+    PokedexPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ClimaPage]
+  declarations: [PokedexPage]
 })
-export class ClimaPageModule {}
+export class PokedexPageModule {}

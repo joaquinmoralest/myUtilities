@@ -1,3 +1,16 @@
-<p>
-  footer works!
-</p>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="arrow-up-circle"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button>
+      <ion-icon name="sunny-outline" (click)="goToClima()"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon name="cash-outline" (click)="goToConvertidor()"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon name="search-outline" (click)="goToPokedex()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
