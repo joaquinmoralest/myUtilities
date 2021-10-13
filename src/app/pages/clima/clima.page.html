@@ -1,5 +1,31 @@
 <app-header [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
-  <h2>Este es el clima</h2>
+  <ion-card>
+    <img src="../assets/clima.jpg" style= "position:absolute;" />
+    <ion-card-header id="mi-card-header">
+      <ion-card-title id="mi-card-title">{{ nciudad }},{{ pais }}</ion-card-title>
+      <ion-card-subtitle id="mi-card-subtitle" >T° {{ tempmax -273.15 | number: '1.0-0' }}°C max/{{ tempmin -273.15 | number: '1.0-0' }}°C min
+      </ion-card-subtitle>
+      {{ clima }} , {{ descripcion }}
+    </ion-card-header>
+  </ion-card>
+  <div class = "ion-padding">
+    <span> <img src={{iconclima}}/><span style= "position:relative;bottom:15px;">T° actual {{ temperatura -273.15 | number: '1.0-0' }}°C </span></span>
+  </div>
+  <ion-card id="mi-card">
+    <ion-row id="mi-row"> 
+      Humedad:{{ humedad }}%
+    </ion-row>
+    <ion-row> 
+      Presión:{{ presion }}Pa
+    </ion-row>
+    <ion-row> 
+      Sensación térmica:{{ senterm -273.15 | number: '1.0-0' }}°C
+    </ion-row>
+    <ion-row> 
+      SW:{{ viento }}m/s
+    </ion-row>
+  </ion-card>
 </ion-content>
+<app-footer></app-footer>

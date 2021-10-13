@@ -24,5 +24,8 @@ export class FooterComponent implements OnInit {
   goToPokedex() {
     this.navController.navigateForward(['pokedex/']);
   }
+  goToHome() {
+    this.navController.navigateForward(['home/']);
+  }
 
 }
