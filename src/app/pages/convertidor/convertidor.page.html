@@ -1,5 +1,29 @@
 <app-header [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
-
+    <div>
+        <hr>
+        <hr>
+        <ion-card>
+          <ion-item>
+            <ion-label position="floating"><h2 id="texto"><strong>Ingresa Cantidad en Dolares</strong></h2></ion-label>
+            <hr>
+            <hr>
+            <ion-input (keyup) = "listadoMonedas()" [(ngModel)]="cantDolares" type="number"></ion-input>
+          </ion-item>
+           
+        </ion-card>  
+    </div>
+    <ion-text color="success">
+        <h5 id="texto-2">{{ pageText }}</h5>
+        <hr>
+        <h2 id="texto">{{ valorPesos | currency: 'USD' | lowercase  }}</h2>
+    </ion-text>
+    <hr>
+    <hr>
+        <h2 id="texto-4" color="warning">{{ acasaPlatita }}</h2>
+    <hr>
+    <hr>
+    <h5 id="texto-3">* Valor del Dólar: {{ valorDolar }}</h5>   
 </ion-content>
+<app-footer></app-footer>
