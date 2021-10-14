@@ -23,6 +23,8 @@ export class ClimaPage implements OnInit {
   senterm;
   presion;
   viento;
+  public date: string = new Date().toISOString();
+  myDate: String = new Date().toISOString();
 
   constructor(private climaServicio: ClimaService) { 
     this.listaclimaSantiago();

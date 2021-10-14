@@ -1,6 +1,10 @@
 <app-header [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
+  <ion-item> 
+    <ion-card-title><ion-datetime aria-disabled="true" displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="myDate"></ion-datetime></ion-card-title>
+    <ion-card-subtitle> <ion-datetime aria-disabled="true" [(ngModel)]="date"></ion-datetime> </ion-card-subtitle>
+  </ion-item>
   <ion-card>
     <img src="../assets/clima.jpg" style= "position:absolute;" />
     <ion-card-header id="mi-card-header">
