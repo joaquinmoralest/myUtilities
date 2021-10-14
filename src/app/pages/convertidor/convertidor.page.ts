@@ -23,7 +23,7 @@ export class ConvertidorPage implements OnInit {
     public monedasServicio: MonedasService,
     public navController: NavController,
     private alertController: AlertController,) {
-    this.dolareuro(); 
+    this.dolareuro();
    }
 
    dolareuro() {
