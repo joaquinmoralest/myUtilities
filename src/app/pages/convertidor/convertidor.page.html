@@ -1,29 +1,50 @@
 <app-header [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
-    <div>
-        <hr>
-        <hr>
-        <ion-card>
-          <ion-item>
-            <ion-label position="floating"><h2 id="texto"><strong>Ingresa Cantidad en Dolares</strong></h2></ion-label>
-            <hr>
-            <hr>
-            <ion-input (keyup) = "listadoMonedas()" [(ngModel)]="cantDolares" type="number"></ion-input>
-          </ion-item>
-           
-        </ion-card>  
-    </div>
-    <ion-text color="success">
-        <h5 id="texto-2">{{ pageText }}</h5>
-        <hr>
-        <h2 id="texto">{{ valorPesos | currency: 'USD' | lowercase  }}</h2>
-    </ion-text>
-    <hr>
-    <hr>
-        <h2 id="texto-4" color="warning">{{ acasaPlatita }}</h2>
-    <hr>
-    <hr>
-    <h5 id="texto-3">* Valor del Dólar: {{ valorDolar }}</h5>   
+<hr>
+<hr>  
+<ion-card> 
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Ingresa Monto</ion-label>
+      <ion-input [(ngModel)]="cantMoneda" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de moneda</ion-label>
+      <ion-select [(ngModel)]="tipoMoneda">
+        <ion-select-option value="dolar" type="text">Dolar</ion-select-option>
+        <ion-select-option value="euro" type="text">Euro</ion-select-option>
+        <ion-select-option value="clp" type="text">Pesos Chilenos</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Convertir a</ion-label>
+      <ion-select [(ngModel)]="tipoMoneda2">
+        <ion-select-option value="dolar" type="text">Dolar</ion-select-option>
+        <ion-select-option value="euro" type="text">Euro</ion-select-option>
+        <ion-select-option value="clp" type="text">Peso Chilenos</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    
+
+
+
+    <ion-button (click) = "dolareuro()"  (click)="mostrarDatosVacios()"  expand="full" color="tertiary">Calcular</ion-button>
+    
+    
+  </ion-list>
+     
+</ion-card> 
+<hr>
+<hr> 
+  <div *ngIf = "(valorPesos2 > 0)" >
+    <ion-card> 
+      <h3 id="resultado"> {{ valorPesos2 | currency: 'USD' | lowercase }}</h3>
+    </ion-card>  
+  </div>
+ 
 </ion-content>
 <app-footer></app-footer>

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ConvertidorService } from './convertidor.service';
+import { MonedasService } from './convertidor.service';
 
 describe('ConvertidorService', () => {
-  let service: ConvertidorService;
+  let service: MonedasService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ConvertidorService);
+    service = TestBed.inject(MonedasService);
   });
 
   it('should be created', () => {
