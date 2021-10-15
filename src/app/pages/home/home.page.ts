@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -9,7 +9,12 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   pageTitle = 'My Utilities';
-
-  constructor() {}
-
+  public loading: boolean;
+  logomu: any;
+  constructor() {
+     this.loading = true;
+  }
+  ngOnInit() {
+           
+  }
 }

@@ -1,9 +1,13 @@
-<app-header [pageTitle]="pageTitle"></app-header>
 
+<app-header [pageTitle]="pageTitle"></app-header>
 <ion-content [fullscreen]="true">
     <div class="home-text">
+        <img id="logomu" src="../../../assets/myutilities.png" alt="logomu">
         <h2>Bienvenido a My Utilities</h2>
-        <h4>Oprime el boton de abajo para acceder a las utilidades</h4>
+        <h4>Oprime el boton de abajo para acceder a las utilidades</h4>   
+        <div class = "loading" *ngIf="loading">
+            <img src="../../assets/loading.gif" >
+        </div>
     </div>
 </ion-content>
 
