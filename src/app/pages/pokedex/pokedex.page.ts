@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
 
 @Component({
@@ -61,14 +61,14 @@ export class PokedexPage implements OnInit {
       const spDefense = document.createElement('p');
       const speed = document.createElement('p');
 
-      titulo.textContent = this.name;
-      tipo.textContent = this.type;
-      hp.textContent = this.hp;
-      attack.textContent = this.attack;
-      defense.textContent = this.defense;
-      spAttack.textContent = this.spAttack;
-      spDefense.textContent = this.spDefense;
-      speed.textContent = this.speed;
+      titulo.textContent = this.name.toUpperCase();
+      tipo.textContent = this.type.toUpperCase();
+      hp.textContent = 'Hp: ' + this.hp;
+      attack.textContent = 'Ataque: ' + this.attack;
+      defense.textContent = 'Defensa: ' + this.defense;
+      spAttack.textContent = 'Ataque especial: ' + this.spAttack;
+      spDefense.textContent = 'Defensa especial: ' + this.spDefense;
+      speed.textContent = 'Velocidad: ' + this.speed;
       img.setAttribute('src', this.sprite);
 
       card.classList.add('card-pokemon');
@@ -92,13 +92,12 @@ export class PokedexPage implements OnInit {
       return card;
     };
 
-    mostrarPokemon() {
+    async mostrarPokemon() {
       this.result.nativeElement.innerHTML = '';
 
-      const cardPokemon = this.pokemonHTML();
+      const cardPokemon = await this.pokemonHTML();
 
       this.result.nativeElement.appendChild(cardPokemon);
-
     };
 
     ngOnInit() {
