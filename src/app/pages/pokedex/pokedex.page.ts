@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { PokedexService } from '../../services/pokedex.service';
 })
 export class PokedexPage implements OnInit {
 
+  @ViewChild ('result') result: ElementRef;
   pageTitle = 'Pokedex';
   indexedPokemon = '';
-  result: any;
   name = '';
   type = '';
   hp = '';
@@ -21,10 +21,12 @@ export class PokedexPage implements OnInit {
   speed = '';
   sprite;
 
-  constructor(public pokedexServicio: PokedexService) { }
+  constructor(
+    public pokedexServicio: PokedexService,
+    ) { }
 
-  getData() {
-    this.pokedexServicio.getPokemon(this.indexedPokemon)
+    getData() {
+      this.pokedexServicio.getPokemon(this.indexedPokemon)
       .then(res => {
         this.name = res.name;
         this.type = res.types[0].type.name;
@@ -40,65 +42,66 @@ export class PokedexPage implements OnInit {
       (error) => {
         console.error(error);
       }
-    );
+      );
+    }
+
+    pokemonHTML() {
+      this.getData();
+
+      const card = document.createElement('div');
+      const avatar = document.createElement('div');
+      const titulo = document.createElement('h4');
+      const tipo = document.createElement('p');
+      const img = document.createElement('img');
+      const stats = document.createElement('div');
+      const hp = document.createElement('p');
+      const attack = document.createElement('p');
+      const defense = document.createElement('p');
+      const spAttack = document.createElement('p');
+      const spDefense = document.createElement('p');
+      const speed = document.createElement('p');
+
+      titulo.textContent = this.name;
+      tipo.textContent = this.type;
+      hp.textContent = this.hp;
+      attack.textContent = this.attack;
+      defense.textContent = this.defense;
+      spAttack.textContent = this.spAttack;
+      spDefense.textContent = this.spDefense;
+      speed.textContent = this.speed;
+      img.setAttribute('src', this.sprite);
+
+      card.classList.add('card-pokemon');
+      avatar.classList.add('avatar');
+      tipo.classList.add('tipo');
+      img.classList.add('img-pokemon');
+      stats.classList.add('stats');
+
+      avatar.appendChild(img);
+      stats.appendChild(hp);
+      stats.appendChild(attack);
+      stats.appendChild(defense);
+      stats.appendChild(spAttack);
+      stats.appendChild(spDefense);
+      stats.appendChild(speed);
+      card.appendChild(titulo);
+      card.appendChild(avatar);
+      card.appendChild(tipo);
+      card.appendChild(stats);
+
+      return card;
+    };
+
+    mostrarPokemon() {
+      this.result.nativeElement.innerHTML = '';
+
+      const cardPokemon = this.pokemonHTML();
+
+      this.result.nativeElement.appendChild(cardPokemon);
+
+    };
+
+    ngOnInit() {
+    }
+
   }
-
-  pokemonHTML() {
-    this.getData();
-
-    const card = document.createElement('div');
-    const avatar = document.createElement('div');
-    const titulo = document.createElement('h4');
-    const tipo = document.createElement('p');
-    const img = document.createElement('img');
-    const stats = document.createElement('div');
-    const hp = document.createElement('p');
-    const attack = document.createElement('p');
-    const defense = document.createElement('p');
-    const spAttack = document.createElement('p');
-    const spDefense = document.createElement('p');
-    const speed = document.createElement('p');
-
-    titulo.textContent = this.name;
-    tipo.textContent = this.type;
-    hp.textContent = this.hp;
-    attack.textContent = this.attack;
-    defense.textContent = this.defense;
-    spAttack.textContent = this.spAttack;
-    spDefense.textContent = this.spDefense;
-    speed.textContent = this.speed;
-    img.setAttribute('src', this.sprite);
-
-    card.classList.add('card-pokemon');
-    avatar.classList.add('avatar');
-    tipo.classList.add('tipo');
-    img.classList.add('img-pokemon');
-    stats.classList.add('stats');
-
-    avatar.appendChild(img);
-    stats.appendChild(hp);
-    stats.appendChild(attack);
-    stats.appendChild(defense);
-    stats.appendChild(spAttack);
-    stats.appendChild(spDefense);
-    stats.appendChild(speed);
-    card.appendChild(titulo);
-    card.appendChild(avatar);
-    card.appendChild(tipo);
-    card.appendChild(stats);
-
-    return card;
-};
-
-mostrarPokemon() {
-  this.result = '';
-
-  const card = this.pokemonHTML();
-
-  this.result = card;
-};
-
-  ngOnInit() {
-  }
-
-}
