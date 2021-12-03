@@ -1,7 +1,7 @@
 {
-  "name": "myUtilities",
+  "name": "CrudPerfil-sqlite",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
 }

@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mantenedor de Perfiles 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list lines="full">
+    <form [formGroup]="mainForm" (ngSubmit)="storeData()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="nombre" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Apellido Paterno</ion-label>
+        <ion-input formControlName="apellido_paterno" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Apellido Materno</ion-label>
+        <ion-input formControlName="apellido_materno" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input formControlName="edad" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Genero</ion-label>
+        <ion-input formControlName="genero" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Ocupacion</ion-label>
+        <ion-input formControlName="ocupacion" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Fono</ion-label>
+        <ion-input formControlName="fono" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input formControlName="correo" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Deporte Favorito</ion-label>
+        <ion-input formControlName="deporte_favorito" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Red Social</ion-label>
+        <ion-input formControlName="red_social" type="text" required></ion-input>
+      </ion-item> 
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Registrar perfil
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Perfiles
+    </ion-list-header>
+
+    <ion-item lines="inset" *ngFor="let perfil of Data">
+      <ion-label>
+        <h5>{{ perfil.nombre }}</h5>
+        <p>{{ perfil.apellido_paterno }}</p>
+        <p>{{ perfil.apellido_materno}}</p>
+        <p>{{ perfil.edad }}</p>
+        <p>{{ perfil.genero }}</p>
+        <p>{{ perfil.ocupacion }}</p>
+        <p>{{ perfil.fono }}</p>
+        <p>{{ perfil.correo }}</p>
+        <p>{{ perfil.deporte_favorito }}</p>
+        <p>{{ perfil.red_social }}</p>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <ion-icon name="create" style="zoom: 2.0;" [routerLink]="['/perfil/',perfil.id]"></ion-icon>
+        <ion-icon name="trash" style="zoom: 2.0;" (click)="deletePerfil(perfil.id)"></ion-icon>
+      </div>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

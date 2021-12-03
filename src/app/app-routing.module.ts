@@ -1,15 +1,20 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'mantenedor',
+    loadChildren: () => import('./pages/mantenedor/mantenedor.module').then( m => m.MantenedorPageModule)
   },
   {
     path: 'convertidor',
@@ -23,17 +28,31 @@ const routes: Routes = [
     path: 'pokedex',
     loadChildren: () => import('./pages/pokedex/pokedex.module').then( m => m.PokedexPageModule)
   },
+
+  {
+    path: 'perfil',
+    redirectTo: 'home'
+  },
+ 
+  {
+    path: 'perfil/:id',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  
   {
     path: '**',
     redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppRoutingModule { }
+

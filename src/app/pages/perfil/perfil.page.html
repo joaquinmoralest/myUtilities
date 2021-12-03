@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modificar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <form [formGroup]="editForm" (ngSubmit)="updatePerfil()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="nombre" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Apellido Paterno</ion-label>
+        <ion-input formControlName="apellido_paterno" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Apellido Materno</ion-label>
+        <ion-input formControlName="apellido_materno" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input formControlName="edad" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Genero</ion-label>
+        <ion-input formControlName="genero" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Ocupacion</ion-label>
+        <ion-input formControlName="ocupacion" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Fono</ion-label>
+        <ion-input formControlName="fono" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input formControlName="correo" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Deporte Favorito</ion-label>
+        <ion-input formControlName="deporte_favorito" type="text" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Red Social</ion-label>
+        <ion-input formControlName="red_social" type="text" required></ion-input>
+      </ion-item> 
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Update
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

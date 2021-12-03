@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-footer',
@@ -24,8 +24,11 @@ export class FooterComponent implements OnInit {
   goToPokedex() {
     this.navController.navigateForward(['pokedex/']);
   }
+  goToMantenedor() {
+    this.navController.navigateForward(['mantenedor/']);
+  }
   goToHome() {
     this.navController.navigateForward(['home/']);
   }
-
+  
 }

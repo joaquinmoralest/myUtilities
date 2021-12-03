@@ -26,7 +26,7 @@ export class PokedexPage implements OnInit {
     ) { }
 
     getData() {
-      this.pokedexServicio.getPokemon(this.indexedPokemon.toLowerCase())
+      this.pokedexServicio.getPokemon(this.indexedPokemon)
       .then(res => {
         this.name = res.name;
         this.type = res.types[0].type.name;

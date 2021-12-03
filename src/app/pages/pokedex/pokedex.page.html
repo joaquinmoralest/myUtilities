@@ -4,7 +4,7 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <h2 class="titulo">¿Quien es ese Pokémon?</h2>
+                <h2>¿Quien es ese Pokémon?</h2>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -16,8 +16,11 @@
                 <ion-button (click)="mostrarPokemon()" fill="outline">Buscar</ion-button>
             </ion-col>
         </ion-row>
-        <ion-row class="result">
-            <div class="result" #result></div>
+        <ion-row>
+            <ion-col size = "12">
+                <div class="result" #result></div>
+            </ion-col>
+            
         </ion-row>
     </ion-grid>
 </ion-content>
