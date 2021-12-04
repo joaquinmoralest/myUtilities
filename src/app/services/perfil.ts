@@ -10,4 +10,5 @@ export class Perfil {
     correo: string;
     deporte_favorito: string;
     red_social: string;
+    foto: string;
 }

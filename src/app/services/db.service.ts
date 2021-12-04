@@ -74,7 +74,8 @@ export class DbService {
               fono: res.rows.item(i).fono,
               correo: res.rows.item(i).correo,
               deporte_favorito: res.rows.item(i).deporte_favorito,
-              red_social: res.rows.item(i).red_social
+              red_social: res.rows.item(i).red_social,
+              foto: res.rows.item(i).foto,
             });
           }
         }
@@ -86,9 +87,9 @@ export class DbService {
 
     //agregar perfil bd//
     
-    addPerfil(nombre, apellido_paterno, apellido_materno,edad,genero,ocupacion,fono,correo,deporte_favorito,red_social){
-      let data= [nombre, apellido_paterno, apellido_materno,edad,genero,ocupacion,fono,correo,deporte_favorito,red_social];
-      return this.storage.executeSql('INSERT INTO perfil(NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO,EDAD,GENERO,OCUPACION,FONO,CORREO,DEPORTE_FAVORITO,RED_SOCIAL) VALUES (?,?,?,?,?,?,?,?,?,?)', data)
+    addPerfil(nombre, apellido_paterno, apellido_materno,edad,genero,ocupacion,fono,correo,deporte_favorito,red_social,foto){
+      let data= [nombre, apellido_paterno, apellido_materno,edad,genero,ocupacion,fono,correo,deporte_favorito,red_social,foto];
+      return this.storage.executeSql('INSERT INTO perfil(NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO,EDAD,GENERO,OCUPACION,FONO,CORREO,DEPORTE_FAVORITO,RED_SOCIAL,FOTO) VALUES (?,?,?,?,?,?,?,?,?,?,?)', data)
       .then(res => {
         this.getPerfiles();
       });
@@ -110,7 +111,8 @@ export class DbService {
           fono: res.rows.item(0).fono,
           correo: res.rows.item(0).correo,
           deporte_favorito: res.rows.item(0).deporte_favorito,
-          red_social: res.rows.item(0).red_social
+          red_social: res.rows.item(0).red_social,
+          foto: res.rows.item(0).foto,
         }
 
     });
