@@ -30,5 +30,5 @@ export class FooterComponent implements OnInit {
   goToHome() {
     this.navController.navigateForward(['home/']);
   }
-  
+
 }

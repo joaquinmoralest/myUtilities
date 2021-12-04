@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
+import { Camera } from '@ionic-native/camera';
 
 @Component({
   selector: 'app-mantenedor',
@@ -12,13 +13,15 @@ import { DbService } from 'src/app/services/db.service';
 export class MantenedorPage implements OnInit {
 
   mainForm: FormGroup;
-  Data: any[] = []
+  Data: any[] = [];
+  image: any;
 
   constructor(
     private db: DbService,
     public formBuilder: FormBuilder,
     private toast: ToastController,
-    private router: Router
+    private router: Router,
+    public camera: typeof Camera
   ) {}
 
   ngOnInit() {
@@ -26,8 +29,8 @@ export class MantenedorPage implements OnInit {
       if(res)
       {
         this.db.fetchPerfiles().subscribe(item => {
-          this.Data = item
-        })
+          this.Data = item;
+        });
       }
     });
     this.mainForm = this.formBuilder.group({
@@ -40,8 +43,9 @@ export class MantenedorPage implements OnInit {
       fono: [''],
       correo: [''],
       deporte_favorito: [''],
-      red_social: ['']
-    })
+      red_social: [''],
+      foto: ['']
+    });
   }
   storeData(){
     this.db.addPerfil(
@@ -54,7 +58,8 @@ export class MantenedorPage implements OnInit {
       this.mainForm.value.fono,
       this.mainForm.value.correo,
       this.mainForm.value.deporte_favorito,
-      this.mainForm.value.red_social
+      this.mainForm.value.red_social,
+      this.mainForm.value.foto
     ).then((res) => {
       this.mainForm.reset();
     });
@@ -62,12 +67,30 @@ export class MantenedorPage implements OnInit {
 
   deletePerfil(id){
     this.db.deletePerfil(id).then(async (res) => {
-      let toast = await this.toast.create({
+      const toast = await this.toast.create({
         message: 'Perfil eliminado',
         duration: 3000
       });
-      toast.present()
+      toast.present();
     });
   }
+
+  // sacarCamara() {
+  //   this.camera.getPicture({
+  //     destinationType: this.camera.DestinationType.DATA_URL,
+  //     sourceType: this.camera.PictureSourceType.CAMERA,
+  //     encodingType: this.camera.EncodingType.JPEG,
+  //     mediaType: this.camera.MediaType.PICTURE,
+  //     targetHeight: 300,
+  //     targetWidth: 300,
+  //     saveToPhotoAlbum: true,
+  //     allowEdit: false,
+  //   }).then(resultado => {
+  //     this.image = 'data:image/jpeg;base64,' + resultado;
+  //     this.mainForm.value.foto = this.image;
+  //   }).catch(error => {
+  //     console.log(error);
+  //   });
+  // }
 
 }
