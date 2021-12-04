@@ -75,22 +75,22 @@ export class MantenedorPage implements OnInit {
     });
   }
 
-  // sacarCamara() {
-  //   this.camera.getPicture({
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     sourceType: this.camera.PictureSourceType.CAMERA,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     mediaType: this.camera.MediaType.PICTURE,
-  //     targetHeight: 300,
-  //     targetWidth: 300,
-  //     saveToPhotoAlbum: true,
-  //     allowEdit: false,
-  //   }).then(resultado => {
-  //     this.image = 'data:image/jpeg;base64,' + resultado;
-  //     this.mainForm.value.foto = this.image;
-  //   }).catch(error => {
-  //     console.log(error);
-  //   });
-  // }
+  sacarCamara() {
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetHeight: 300,
+      targetWidth: 300,
+      saveToPhotoAlbum: true,
+      allowEdit: false,
+    }).then(resultado => {
+      this.image = 'data:image/jpeg;base64,' + resultado;
+      this.mainForm.value.foto = this.image;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
 }
